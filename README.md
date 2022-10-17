@@ -1,6 +1,6 @@
 # Summer Island
 
-Summer Island is a 3d-animation created in Blender within Computer Graphics Course, Kyiv Polytechnic University, 2022.
+Summer Island is a 3d-animation created in Blender within Computer Graphics Course, Kyiv Polytechnic University, October 2022.
 
 ## Usage
 The project file could be reviewed in Blender by simply opening summer-island.blend in the application.
