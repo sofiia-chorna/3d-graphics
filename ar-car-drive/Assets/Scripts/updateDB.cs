@@ -14,7 +14,6 @@ public class updateDB : MonoBehaviour
 
     private void Start()
     {
-        //updateDatabase(); // for testing uncomment this then input from params exposed in script component propertie inspector view
         readDatabase();
     }
 
@@ -60,7 +59,6 @@ public class updateDB : MonoBehaviour
         Debug.Log("Score Count is " + Score.scoreCount);
         dbcmd.CommandText = sqlQuery;
         dreader = dbcmd.ExecuteReader();
-        //Score.oldScore.text = "Old Score: " + newScore.ToString();
 
         dreader.Close();
         dreader = null;
@@ -69,6 +67,7 @@ public class updateDB : MonoBehaviour
         dbconn.Close();
         dbconn = null;
     }
+
     // Overloading
     public void updateDatabase(string databasename)
     {
@@ -84,7 +83,6 @@ public class updateDB : MonoBehaviour
         string sqlQuery = "UPDATE user " + "set score = " + Score.scoreCount;
         dbcmd.CommandText = sqlQuery;
         dreader = dbcmd.ExecuteReader();
-        Debug.Log("updated");
 
         dreader.Close();
         dreader = null;

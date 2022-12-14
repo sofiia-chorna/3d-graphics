@@ -21,11 +21,16 @@ public class Score : MonoBehaviour
         }
 #endif
     }
+
     private void UpdateScore()
     {
         if (scoreCount != -1)
+        {
             ScoreText.text = "New Score: " + scoreCount.ToString();
+        }
         else
+        {
             ScoreText.text = "New Score: 0";
+        }
     }
 }

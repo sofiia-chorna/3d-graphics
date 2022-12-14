@@ -11,10 +11,9 @@ public class GPSController : MonoBehaviour
     DateTime epoch = new DateTime(1970, 1, 1, 0, 0, (int)DateTimeKind.Utc); // Date since/from first epoch difference in seconds counter 1970
     [SerializeField] private int xPos, yPos, textSize;
     [SerializeField] private TMPro.TextMeshProUGUI GPSCordsText;
+
     private void OnGUI()
     {
-        //GUI.skin.label.fontSize = textSize;
-        //GUI.Label(new Rect(xPos, yPos, 1000, 1000), message);
         GPSCordsText.text = message;
     }
 
@@ -41,7 +40,6 @@ public class GPSController : MonoBehaviour
         {
             message = "Location Services Not Enabled.";
             Debug.LogFormat("Android and Location not enabled");
-            //yield break;
             yield return new WaitForSeconds(1);
         }
 
@@ -90,14 +88,8 @@ public class GPSController : MonoBehaviour
         else
         {
             Input.compass.enabled = true;
-
-            message = "Lat: " + Input.location.lastData.latitude +
-                      "\nLong: " + Input.location.lastData.longitude +
-                      "\nAlt: " + Input.location.lastData.altitude +
-                      "\nHoriz Acc: " + Input.location.lastData.horizontalAccuracy +
-                      "\nVert Acc: " + Input.location.lastData.verticalAccuracy +
-                      "\n=========" +
-                      "\nHeading: " + Input.compass.trueHeading;
+            message = "Lat: " + Input.location.lastData.latitude + "\n" +
+                      "Long: " + Input.location.lastData.longitude;
         }
 
         // Stop service if there is no need to query location updates continuously
@@ -108,18 +100,5 @@ public class GPSController : MonoBehaviour
     void Start()
     {
         StartCoroutine(StartGPS());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*        DateTime lastUpdate = epoch.AddSeconds(Input.location.lastData.timestamp);
-                DateTime rightNow = DateTime.Now;
-                thisLat = Input.location.lastData.latitude;
-                thisLong = Input.location.lastData.longitude;
-                message = "Current Lat: " + thisLat +
-                          "\nCurrent Long: " + thisLong +
-                          "\nUpdate Time: " + lastUpdate.ToString("HH:mm:ss") +
-                          "\nNow: " + rightNow.ToString("HH:mm:ss");*/
     }
 }

@@ -11,15 +11,14 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         public void QuitGame()
         {
-            // if score bigger then save otherwise do not
+            // Save the score only if it is bigger then the previous max
             if (Application.isPlaying)
             {
-                if(Score.scoreCount > Score.oldScoreCount)
+                if (Score.scoreCount > Score.oldScoreCount)
                 {
                     appMgmt.GetComponent<updateDB>().updateDatabase("playerData");
-                    Debug.Log("You did new SCORE!!");
+                    Debug.Log("You have reached a new score!");
                 }
-                Debug.Log("saving");
                 Application.Quit();
             }
         }
